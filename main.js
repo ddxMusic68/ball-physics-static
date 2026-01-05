@@ -6,8 +6,10 @@ class Ball {
         this.y_vel = y_vel
         this.x = x
         this.y = y
+        this.element = document.createElement('div')
+        this.element.classList.add('ball')
     }
 }
-
-const ball = document.createElement('div')
-document.addElement()
+let ball1 = new Ball(radius=10)
+console.log(ball1)
+document.body.appendChild(ball1.element)
