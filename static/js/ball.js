@@ -10,13 +10,9 @@ export default class Ball {
         this.y_vel = y_vel
         this.x = x
         this.y = y
+        this.color = color
         this.element = document.createElement('div')
         this.element.classList.add('ball')
-        this.element.style.width = radius*2+"px"
-        this.element.style.height = radius*2+"px"
-        this.element.style.left = x-radius+"px"
-        this.element.style.top = y-radius+"px"
-        this.element.style.backgroundColor = color
         Ball.balls.push(this)
 
     }
@@ -27,26 +23,27 @@ export default class Ball {
         this.y += this.y_vel
     }
     update_html() {
-        this.element.style.left = this.x+"px"
-        this.element.style.top = this.y+"px"
+        this.element.style.width = this.radius*2+"px"
+        this.element.style.height = this.radius*2+"px"
+        this.element.style.left = (this.x-this.radius)+"px"
+        this.element.style.top = (this.y-this.radius)+"px"
+        this.element.style.backgroundColor = this.color
     }
-    handle_bounce() {
-        width = document.body.getBoundingClientRect().width
-        height = document.body.getBoundingClientRect().height
-        if (this.x<0) {
-            this.x = 0
+    handle_bounce(width, height) {
+        if (this.x<this.radius) {
+            this.x = this.radius
             this.x_vel = -this.x_vel
         }
-        if (this.x>width ) {
-            this.x = width
+        if (this.x>width-this.radius ) {
+            this.x = width-this.radius
             this.x_vel = -this.x_vel
         }
-        if (this.y>height ) {
-            this.y = height
+        if (this.y>height-this.radius ) {
+            this.y = height-this.radius
             this.y_vel = -this.y_vel
         }
-        if (this.y<0) {
-            this.y = 0
+        if (this.y<this.radius) {
+            this.y = this.radius
             this.y_vel = -this.y_vel
         }
     }
