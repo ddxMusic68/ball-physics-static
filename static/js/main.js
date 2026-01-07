@@ -24,6 +24,11 @@ play_btn.addEventListener("click", (e) => {
     }
 })
 
+const side_panel_btn = document.querySelector(".side_panel_btn")
+side_panel_btn.addEventListener("click", (e) => {
+    side_panel.classList.toggle("hide")
+})
+
 // Main
 new Ball({radius:100, x_vel:2})
 new Ball({radius:50, x_acc:3, color:'blue'})

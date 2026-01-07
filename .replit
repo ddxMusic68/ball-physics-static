@@ -30,6 +30,15 @@ waitForPort = 5000
 [workflows.workflow.metadata]
 outputType = "webview"
 
+[[workflows.workflow]]
+name = "Run server"
+mode = "sequential"
+author = 52464921
+
+[[workflows.workflow.tasks]]
+task = "shell.exec"
+args = "python -u ./server.py"
+
 [[ports]]
 localPort = 5000
 externalPort = 80

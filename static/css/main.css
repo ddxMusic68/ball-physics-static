@@ -1,8 +1,21 @@
+/* HTML Elements */
 body {
     margin:0;
     padding:0;
     height:100vh;
     width:100vw;
+    background:white;
+}
+
+/* General Classes */
+.hide {
+  display:none;
+}
+
+/* Custom Classes */
+.top_bar {
+  width:100%;
+  background:black;
 }
 .play_btn {
   position:absolute;
