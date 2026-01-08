@@ -1,15 +1,15 @@
 export default class Ball {
     static balls = []
 
-    constructor({radius=5, gravity=2, y_acc=1, x_acc=0,  x_vel=2, y_vel=0, x=0, y=0, color="red"} = {}) {
+    constructor({radius=5, y_acc=1, x_acc=0,  x_vel=2, y_vel=0, x=0, y=0, retention=0.9, color="red"} = {}) {
         this.radius = radius
-        this.gravity = gravity
         this.x_acc = x_acc
         this.y_acc = y_acc
         this.x_vel = x_vel
         this.y_vel = y_vel
         this.x = x
         this.y = y
+        this.retention = retention
         this.color = color
         this.element = document.createElement('div')
         this.element.classList.add('ball')
@@ -46,5 +46,8 @@ export default class Ball {
             this.y = this.radius
             this.y_vel = -this.y_vel
         }
+    }
+    getVelVector() {
+        return [this.x_vel, this.y_vel]
     }
 }

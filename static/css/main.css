@@ -5,23 +5,29 @@ body {
     height:100vh;
     width:100vw;
     background:white;
+    overflow:hidden;
 }
 
 /* General Classes */
 .hide {
-  display:none;
+  display:none !important;
 }
 
 /* Custom Classes */
-.top_bar {
+.top_panel {
+  height:30px;
   width:100%;
   background:black;
 }
+.side_panel {
+  display:flex;
+  align-items:end;
+  height:100%;
+  width:15%;
+  background-color:black;
+}
 .play_btn {
-  position:absolute;
-  left:50vw;
-  top:90vh;
-  width:75px;
+  width:100%;
   height:30px;
   background:blue;
   color:white;
@@ -33,10 +39,16 @@ body {
   z-index:-1;
 }
 .wall {
+  position:absolute;
   z-index:-1;
+  box-sizing: border-box;
+  border-right:4px solid rgb(0, 255, 64);
 }
 .view {
+  position:absolute;
+  overflow:hidden;
   width:100vw;
   height:100vh;
-  position:absolute;
+  display:flex;
+  flex-wrap: nowrap; 
 }
