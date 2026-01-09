@@ -50,4 +50,14 @@ export default class Ball {
     getVelVector() {
         return [this.x_vel, this.y_vel]
     }
+    pointCollision(point) {
+        let px, py = point
+        const distance = Math.sqrt(Math.abs(this.x-px)**2+Math.abs(this.y-py)**2)
+        if (distance<radius) {
+            return true;
+        } 
+        else {
+            return false;
+        }
+    }
 }

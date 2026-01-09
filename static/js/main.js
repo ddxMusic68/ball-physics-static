@@ -30,24 +30,37 @@ side_panel_btn.addEventListener("click", (e) => {
     side_panel.classList.toggle("hide")
 })
 
+let mousepos = [0, 0]
+document.addEventListener('mousemove', (e) => {
+    mousepos = [e.clientX, e.clientY]
+})
+
+document.addEventListener('mousedown', (e) => {
+    console.log(mousepos)
+})
+
 const view = document.querySelector(".view")
 
 // Main
 let b1 = new Ball({radius:100, x_vel:2})
-new Ball({radius:50, x_acc:3, color:'blue'})
 let w1 = new Wall({})
-console.log(w1.getNormalVector())
-console.log(b1.getVelVector())
 
+for (const corner of w1.getCorners()) {
+    let point = document.createElement("div")
+    point.classList.add("point")
+    point.style.left = corner[0]+"px"
+    point.style.top = corner[1]+"px"
+    view.appendChild(point)
+}
 
-for (const ball of Ball.balls) {
+for (const ball of Ball.balls) { // adds balls to page
     view.appendChild(ball.element)
 }
-for (const wall of Wall.walls) {
+for (const wall of Wall.walls) { // adds walls to page
     view.appendChild(wall.element)
 }
 
-async function run() {
+async function run() { // runs code mainloop
     while (running) {
         for (const ball of Ball.balls) {
             width = document.body.getBoundingClientRect().width

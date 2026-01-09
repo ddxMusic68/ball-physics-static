@@ -52,3 +52,9 @@ body {
   display:flex;
   flex-wrap: nowrap; 
 }
+.point {
+  position:absolute;
+  width:5px;
+  height:5px;
+  background-color:blue;
+}

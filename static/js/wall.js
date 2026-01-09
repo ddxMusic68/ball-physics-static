@@ -7,12 +7,13 @@ function degToRad(degrees) {
 export default class Wall {
     static walls = []
 
-    constructor({width=100, height=100, x=200, y=200, rotation=45, color='red'} = {}) {
+    constructor({width=100, height=100, x=200, y=300, rotation=0, color='red'} = {}) {
         this.width = width
         this.height = height
         this.x = x
         this.y = y
         this.rotation = rotation
+
         this.element = document.createElement("div")
         this.element.classList.add("wall")
         this.element.style.width = width+"px"
@@ -27,6 +28,16 @@ export default class Wall {
     getNormalVector() {
         return [Math.cos(degToRad(this.rotation)), Math.sin(degToRad(this.rotation))]
     }
-}
 
-// console.log(getNormalVector())
+    getCorners() {
+        const midpoint = [this.x+(this.width/2), this.y+(this.height/2)]
+        const midToCorner = Math.sqrt(this.width**2+this.height**2)/2
+        
+        return [
+            [midpoint[0]+(Math.sin(degToRad(this.rotation+45))*midToCorner), midpoint[1]+(Math.cos(degToRad(this.rotation+45))*midToCorner)], 
+            [midpoint[0]-(Math.cos(degToRad(this.rotation+45))*midToCorner), midpoint[1]+(Math.sin(degToRad(this.rotation+45))*midToCorner)],  
+            [midpoint[0]+(Math.cos(degToRad(this.rotation+45))*midToCorner), midpoint[1]-(Math.sin(degToRad(this.rotation+45))*midToCorner)], 
+            [midpoint[0]-(Math.sin(degToRad(this.rotation+45))*midToCorner), midpoint[1]-(Math.cos(degToRad(this.rotation+45))*midToCorner)], 
+        ]
+    }
+}
